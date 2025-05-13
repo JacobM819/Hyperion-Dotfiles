@@ -1,12 +1,19 @@
 /* fragile file path */
-@import url("../../.cache/hellwal/waybar-colors.css");
+/*@import url("../../.cache/hellwal/waybar-colors.css");*/
 
 /* Use hellwal colors  */
-@define-color bordercolor alpha(@color14, 1.0);
+/*@define-color bordercolor alpha(@color14, 1.0);
 @define-color bg alpha(@color8, 1.0);
 @define-color fg alpha(@foreground, 1.0);
 @define-color highlight alpha(@color15, 1.0);
 @define-color alert alpha(@color11, 1.0);
+@define-color disabled #A5A5A5;*/
+
+@define-color bordercolor alpha(#D00000, 1.0);
+@define-color bg alpha(#150000, 1.0);
+@define-color fg alpha(#600000, 1.0);
+@define-color highlight alpha(#910000, 1.0);
+@define-color alert alpha(#00ee00, 1.0);
 @define-color disabled #A5A5A5;
 
 * {
