@@ -9,26 +9,26 @@
 @define-color alert alpha(@color11, 1.0);
 @define-color disabled #A5A5A5;*/
 
-@define-color bordercolor alpha(#D00000, 1.0);
-@define-color bg alpha(#150000, 1.0);
-@define-color fg alpha(#600000, 1.0);
-@define-color highlight alpha(#910000, 1.0);
-@define-color alert alpha(#00ee00, 1.0);
+@define-color bordercolor alpha(#00a9ee, 1.0);
+@define-color bg alpha(#003b59, 1.0);
+@define-color fg alpha(#0075a3, 1.0);
+@define-color highlight alpha(#f78f2d, 1.0);
+@define-color alert alpha(#ecf002, 1.0);
 @define-color disabled #A5A5A5;
 
 * {
   min-height: 0;
-  font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-family: "JetBrains Mono NerdFont", Roboto, sans-serif;
+  font-size: 1.15rem;
 }
 
-window#waybar {
+#waybar {
   color: @fg;
   background: @bg;
   transition-property: background-color;
   transition-duration: 0.5s;
   border: 0.15rem solid @bordercolor;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
 }
 
 button {
@@ -44,15 +44,19 @@ button:hover {
   background: inherit;
 }
 
+#workspaces {
+  padding-left: .8rem;
+}
+
 #workspaces button {
-  color: @fg;
+  color: @bordercolor;
 }
 
 #workspaces button.urgent {
   color: @alert;
 }
 #workspaces button.empty {
-  color: @bordercolor;
+  color: @fg;
 }
 
 #workspaces button.active {
@@ -90,7 +94,6 @@ button:hover {
 
 #clock,
 #cava,
-#battery,
 #cpu,
 #memory,
 #disk,
@@ -115,8 +118,9 @@ button:hover {
 #custom-kdeconnect,
 #custom-bluetooth,
 #custom-power,
+#custom-hypridle,
 #custom-separator,
-#idle_inhibitor,
+#custom-hypridle,
 #window,
 #mpd {
   padding: 0rem 0.4rem;
@@ -128,10 +132,7 @@ button:hover {
 #custom-wifi,
 #custom-kdeconnect,
 #custom-bluetooth,
-#custom-power,
-#idle_inhibitor {
-  color: @bg;
-}
+#custom-hypridle
 
 #clock,
 #custom-group {
@@ -140,6 +141,11 @@ button:hover {
   margin: 0.4rem;
   padding: 0rem 0.4rem;
   border-radius: 0.4rem;
+}
+
+#custom-power {
+  color: @bordercolor;
+  margin-right: 1.15rem;
 }
 
 #custom-separator {
@@ -162,21 +168,6 @@ button:hover {
   color: @alert;
 }
 
-#battery.charging,
-#battery.plugged {
-  color: @activegreen;
-}
-
 label:focus {
   background-color: @bg;
-}
-
-#battery.critical:not(.charging) {
-  background-color: @alert;
-  color: @fg;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }

@@ -12,35 +12,34 @@
 
   // Choose the order of the modules
 
-  "modules-left": ["hyprland/workspaces", "river/tags", "tray"],
+  "modules-left": ["hyprland/workspaces", "wlr/tags", "tray"],
 
   //"modules-center": ["clock"],
 
   "modules-right": [
     "network",
-    "cpu",
     "memory",
     "temperature",
     "backlight",
     "wireplumber",
     "clock",
     "custom/separator",
-    "group/custom-group"
+    "group/custom-group",
+    "custom/separator",
+    "custom/power"
   ],
 
   "group/custom-group": {
     "orientation": "horizontal",
     "modules": [
-      "idle_inhibitor",
+      "custom/hypridle",
       "custom/bluetooth",
-      "custom/kdeconnect",
-      "custom/wifi",
-      "custom/power"
+      "custom/wifi"
     ]
   },
 
   // Modules configuration
-  "river/tags": {
+  "wlr/tags": {
     "num-tags": 7,
     "tag-labels": ["󰈹", "", "", "", "", "", "󰠮", "", "", ""]
   },
@@ -154,46 +153,22 @@
       "on-click-right": "mode"
     }
   },
-
-  "battery": {
-    "states": {
-      // "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{icon} {time}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": ["", "", "", "", ""]
-  },
-
-  
-	"idle_inhibitor": {
-    		"format": "{icon}",
-    		"format-icons": {
-      			"activated": "󰈈",
-      			"deactivated": "󰈉"
-  		}
-	},
-
+	
+"custom/hypridle": {
+  "format": "{}",
+  "exec": "~/.config/hypr/scripts/hypridle-status.sh",
+  "on-click": "~/.config/hypr/scripts/toggle-hypridle.sh",
+  "interval": 5,
+  "return-type": "json",
+  "signal": 10
+},
 
   "custom/power": {
     "format": "{icon}",
     "format-icons": "", //  
     "exec-on-event": "true",
-    "on-click": "$HOME/scripts/rofi-power",
+    "on-click": "~/.config/hypr/scripts/wofi-power.sh",
     "tooltip-format": "Power Menu"
-  },
-
-  "custom/kdeconnect": {
-    "format": "{icon}",
-    "format-icons": "",
-    "exec-on-event": "true",
-    "on-click": "kdeconnect-app",
-    "tooltip-format": "KDE Connect"
   },
 
   "custom/bluetooth": {
