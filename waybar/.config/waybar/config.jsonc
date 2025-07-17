@@ -33,7 +33,7 @@
     "orientation": "horizontal",
     "modules": [
       "custom/hypridle",
-      "custom/bluetooth",
+      "custom/nightlight",
       "custom/wifi"
     ]
   },
@@ -163,6 +163,14 @@
   "signal": 10
 },
 
+"custom/nightlight": {
+  "format": "{icon}",
+	"format-icons": "⏾", //  
+  "tooltip": false,
+  "on-click": "~/.config/waybar/nightlight_wofi.sh",
+  "exec": "echo 🌣"
+},
+
   "custom/power": {
     "format": "{icon}",
     "format-icons": "", //  
@@ -183,7 +191,7 @@
     "format": "{icon}",
     "format-icons": "",
     "exec-on-event": "true",
-    "on-click": "$HOME/scripts/rofi-wifi",
+    "on-click": "kitty nmtui",
     "tooltip-format": "Wifi Menu"
   },
 

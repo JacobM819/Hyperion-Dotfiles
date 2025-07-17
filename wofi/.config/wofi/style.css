@@ -47,7 +47,7 @@
 
 @define-color	base #003b59;
 @define-color   border #00a9ee;
-@define-color   accent #f78f2d;
+@define-color   accent #ed00aa;
 @define-color   highlight @accent;
 @define-color	base-rgb  rgb(30, 30, 46);
 @define-color	mantle  #181825;

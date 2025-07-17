@@ -12,7 +12,7 @@
 @define-color bordercolor alpha(#00a9ee, 1.0);
 @define-color bg alpha(#003b59, 1.0);
 @define-color fg alpha(#0075a3, 1.0);
-@define-color highlight alpha(#f78f2d, 1.0);
+@define-color highlight alpha(#ed00aa, 1.0);
 @define-color alert alpha(#ecf002, 1.0);
 @define-color disabled #A5A5A5;
 
@@ -132,15 +132,19 @@ button:hover {
 #custom-wifi,
 #custom-kdeconnect,
 #custom-bluetooth,
-#custom-hypridle
+#custom-hypridle,
 
 #clock,
 #custom-group {
   color: @bg;
   background-color: @bordercolor;
   margin: 0.4rem;
-  padding: 0rem 0.4rem;
+  padding: 0rem 0.6rem;
   border-radius: 0.4rem;
+}
+#custom-hypridle {
+	padding-left: 0;
+	padding-right:1.1rem;
 }
 
 #custom-power {
