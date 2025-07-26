@@ -12,7 +12,7 @@
 
   // Choose the order of the modules
 
-  "modules-left": ["hyprland/workspaces", "wlr/tags", "tray"],
+  "modules-left": ["hyprland/workspaces", "wlr/tags", "tray", "custom/spotify"],
 
   //"modules-center": ["clock"],
 
@@ -88,6 +88,15 @@
     // "device": "acpi_video1",
     "format": "{icon} {percent:>2}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+
+  "custom/spotify": {
+      "exec": "/usr/bin/python3 ~/.config/waybar/mediaplayer.py --player spotify",
+      "format": "{}  ",
+      "return-type": "json",
+      "on-click": "playerctl --player=spotify play-pause",
+      "on-scroll-up": "playerctl --player=spotify next",
+      "on-scroll-down": "playerctl --player=spotify previous"
   },
 
   "network": {
