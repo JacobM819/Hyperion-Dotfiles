@@ -18,7 +18,7 @@
 
 * {
   min-height: 0;
-  font-family: "JetBrains Mono NerdFont", Roboto, sans-serif;
+  font-family: "JetBrains Mono NerdFont", "Font Awesome 8 Free", Roboto, sans-serif;
   font-size: 1.15rem;
 }
 
@@ -121,6 +121,7 @@ button:hover {
 #custom-hypridle,
 #custom-separator,
 #custom-hypridle,
+#custom-weather,
 #window,
 #mpd {
   padding: 0rem 0.4rem;
@@ -143,6 +144,7 @@ button:hover {
   border-radius: 0.4rem;
 }
 #custom-hypridle {
+  font-family: "Font Awesome 6 Free Solid";
 	padding-left: 0;
 	padding-right:1.1rem;
 }
@@ -180,4 +182,9 @@ label:focus {
     padding: 0 10px;
     margin: 0 4px;
     color: @bordercolor;
+}
+
+#custom-nightlight {
+  font-family: "Font Awesome 7 Free Solid";
+  font-weight: 900;
 }

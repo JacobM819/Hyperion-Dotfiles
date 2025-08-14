@@ -1,6 +1,7 @@
 // vim:ft=jsonc
 {
   "layer": "top",
+  "output": "DP-2",
   "position": "top",
   "height": 25,
   "margin-left": 10,
@@ -17,6 +18,7 @@
   //"modules-center": ["clock"],
 
   "modules-right": [
+    "custom/weather",
     "network",
     "memory",
     "temperature",
@@ -88,6 +90,14 @@
     // "device": "acpi_video1",
     "format": "{icon} {percent:>2}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+
+  "custom/weather": {
+    "format": "{} °",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --ampm --location 'State College' --fahrenheit ",
+    "return-type": "json"
   },
 
   "custom/spotify": {
@@ -174,7 +184,7 @@
 
 "custom/nightlight": {
   "format": "{icon}",
-	"format-icons": "⏾", //  
+	"format-icons": "󰤄", //  
   "tooltip": false,
   "on-click": "~/.config/waybar/nightlight_wofi.sh",
   "exec": "echo 🌣"

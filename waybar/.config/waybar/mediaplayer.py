@@ -42,7 +42,7 @@ class PlayerManager:
         self.curr_track_title = ""
         self.curr_player = ""
         self.forward = True
-        self.max_title_length =  23
+        self.max_title_length =  20
         self.window_length = 20
         self.trunc_index = 0
         self.init_players()
@@ -73,16 +73,20 @@ class PlayerManager:
         return self.manager.props.players
 
     def truncate_title(self):
-        player_name = self.curr_player.props.player_name
-        artist = self.curr_player.get_artist()
-        title = self.curr_player.get_title()
-        track_info = ""
-
-        if artist is not None and title is not None:
-            track_info = f"{artist} - {title}"
-        else:
-            title = title.replace("<", "&lt;").replace(">", "&gt;")
-            track_info = title
+        try:
+            player_name = self.curr_player.props.player_name
+            artist = self.curr_player.get_artist()
+            title = self.curr_player.get_title()
+            track_info = ""
+            
+            if artist is not None and title is not None:
+                track_info = f"{artist} - {title}"
+            else:
+                title = title.replace("<", "&lt;").replace(">", "&gt;")
+                track_info = title
+        except AttributeError:
+            print("Error truncating title")
+            return True
 
         if len(track_info) > self.max_title_length:
             if self.forward:
@@ -90,6 +94,9 @@ class PlayerManager:
             else:
                 self.trunc_index -= 1
                 
+            print(self.trunc_index)
+            print(self.window_length)
+            print(self.trunc_index+self.window_length)
             if self.trunc_index + self.window_length >= len(track_info) or self.trunc_index == 0:
                 self.forward = not self.forward
             track_info = track_info[self.trunc_index:self.trunc_index+self.window_length]
