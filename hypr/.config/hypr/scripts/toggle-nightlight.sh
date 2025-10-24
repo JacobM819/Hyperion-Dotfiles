@@ -7,7 +7,7 @@ LON=-77.9
 PIDFILE="/tmp/wlsunset.pid"
 
 # Define preset temperature options
-temps=$(seq 3000 250 6500)
+temps=$(seq 2000 250 4500)
 
 # Use wofi to pick one
 chosen=$(echo "$temps" | wofi --dmenu --prompt "Nightlight Temp (K)" --insensitive --width 300)

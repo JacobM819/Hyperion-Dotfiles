@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# >>> Replace these with your sink IDs <<<
-SPEAKER_ID=45
-HEADPHONES_ID=57
+# The name of the devices to toggle betwee. The ID's change on system startup, so we need to use the names
+SPEAKER_NAME="USB2.0 Device"
+HEADPHONES_NAME="AUX Headphones"
 
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/audio-toggle"
 STATE_FILE="$STATE_DIR/state"
@@ -21,10 +21,10 @@ fi
 last=$(<"$STATE_FILE")
 if [[ "$last" == "speaker" ]]; then
   target="headphones"
-  target_id="$HEADPHONES_ID"
+  target_id=$(wpctl status | grep -E "\. ${HEADPHONES_NAME^}\b" | awk '{print $2}' | sed 's/\.//')
 else
   target="speaker"
-  target_id="$SPEAKER_ID"
+  target_id=$(wpctl status | awk '$0 ~ /Sinks:/ {in_sinks=1; next} $0 ~ /Sources:/ {in_sinks=0} in_sinks && $0 ~ /\. USB2\.0/ {print $2}' | sed 's/\.//')
 fi
 
 if wpctl set-default "$target_id"; then

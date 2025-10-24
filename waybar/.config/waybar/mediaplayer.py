@@ -7,7 +7,6 @@ import argparse
 import logging
 import sys
 import signal
-import gi
 import json
 import os
 from typing import List
@@ -88,18 +87,25 @@ class PlayerManager:
             print("Error truncating title")
             return True
 
-        if len(track_info) > self.max_title_length:
+        if self.trunc_index+self.window_length > len(track_info):
+            self.trunc_index = 1
+
+        if len(track_info)-self.max_title_length > 3:
             if self.forward:
                 self.trunc_index += 1
             else:
                 self.trunc_index -= 1
-                
-            print(self.trunc_index)
-            print(self.window_length)
-            print(self.trunc_index+self.window_length)
+
+            # FOR TESTING   
+            #print(self.trunc_index)
+            #print(self.window_length)
+            #print(self.trunc_index+self.window_length)
+            #print(len(track_info))
             if self.trunc_index + self.window_length >= len(track_info) or self.trunc_index == 0:
                 self.forward = not self.forward
             track_info = track_info[self.trunc_index:self.trunc_index+self.window_length]
+        else:
+            self.window_length=len(track_info)
             
         track_info = track_info.replace("&", "&amp;")
         if track_info:

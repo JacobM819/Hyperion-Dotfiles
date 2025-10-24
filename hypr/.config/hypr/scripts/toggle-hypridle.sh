@@ -11,4 +11,4 @@ else
 fi
 
 # Send a signal to Waybar to force-refresh the module
-pkill -RTMIN+10 waybar
+#pkill -RTMIN+10 waybar
