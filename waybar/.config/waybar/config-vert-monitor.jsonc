@@ -1,7 +1,7 @@
 // vim:ft=jsonc
 {
   "layer": "top",
-  "output": ["HDMI-A-1"],
+  "output": ["DP-3"],
   "position": "top",
   "height": 25,
   "margin-left": 10,
