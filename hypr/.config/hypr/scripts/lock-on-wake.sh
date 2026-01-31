@@ -1,5 +1,6 @@
 #!/bin/bash
 pkill mpvpaper
-waybar &
+pkill waybar
+waybar & waybar -c ~/.config/waybar/config-vert-monitor.jsonc
 exec hyprlock
 
