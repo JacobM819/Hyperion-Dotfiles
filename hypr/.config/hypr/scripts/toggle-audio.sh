@@ -3,7 +3,7 @@ set -euo pipefail
 
 # The name of the devices to toggle betwee. The ID's change on system startup, so we need to use the names
 SPEAKER_NAME="USB2.0 Device"
-HEADPHONES_NAME="AUX Headphones"
+HEADPHONES_NAME="Arctis Nova 3X Wireless Analog Stereo"
 
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/audio-toggle"
 STATE_FILE="$STATE_DIR/state"
