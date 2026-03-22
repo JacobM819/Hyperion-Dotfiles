@@ -1,7 +1,0 @@
--- ########## PLUGINS GO HERE ##########
-return {
-  
-  
-  
-  
-}
