@@ -1,5 +1,6 @@
 -- ########## GLOBAL CONFIG FILE ##########
 --
+vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site")
 -- install lazy if not already present
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

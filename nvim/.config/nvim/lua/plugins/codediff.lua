@@ -1,11 +1,13 @@
 return {
 	{
+    -- Can see all current diffs by doing :CodeDiff
 		"esmuellert/codediff.nvim",
 		config = function()
 			require("codediff").setup({})
 		end,
 	},
 	{
+    -- Configures gutter sign diffs
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup({
