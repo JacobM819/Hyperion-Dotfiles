@@ -1,13 +1,20 @@
 return {
 	{
-		-- Can see all current diffs by doing :CodeDiff
-		"esmuellert/codediff.nvim",
-		config = function()
-			require("codediff").setup({})
-		end,
+      -- Does all the git stuff
+		"NeogitOrg/neogit",
+		lazy = true,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"esmuellert/codediff.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		cmd = "Neogit",
+		keys = {
+			{ "<leader>d", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+		},
 	},
 	{
-    -- Configures gutter sign diffs
+		-- Configures gutter sign diffs. Can also view hunk diffs
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup({
