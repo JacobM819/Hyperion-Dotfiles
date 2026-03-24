@@ -1,6 +1,6 @@
 return {
 	{
-    -- Can see all current diffs by doing :CodeDiff
+		-- Can see all current diffs by doing :CodeDiff
 		"esmuellert/codediff.nvim",
 		config = function()
 			require("codediff").setup({})
@@ -21,6 +21,8 @@ return {
 				},
 				update_debounce = 100,
 			})
+			vim.keymap.set("n", "<leader>u", require("gitsigns").reset_hunk, {})
+			vim.keymap.set("n", "<leader>y", require("gitsigns").preview_hunk, {})
 		end,
 	},
 }
