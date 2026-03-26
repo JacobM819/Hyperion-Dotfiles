@@ -10,7 +10,7 @@ return {
 		},
 		cmd = "Neogit",
 		keys = {
-			{ "<leader>d", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
 		},
 	},
 	{
@@ -28,8 +28,8 @@ return {
 				},
 				update_debounce = 100,
 			})
-			vim.keymap.set("n", "<leader>u", require("gitsigns").reset_hunk, {})
-			vim.keymap.set("n", "<leader>y", require("gitsigns").preview_hunk, {})
+			vim.keymap.set("n", "<leader>gu", require("gitsigns").reset_hunk, {})
+			vim.keymap.set("n", "<leader>gi", require("gitsigns").preview_hunk, {})
 		end,
 	},
 }

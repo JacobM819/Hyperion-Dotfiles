@@ -13,23 +13,23 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pylsp" },
+				ensure_installed = { "lua_ls", "pyright" },
 			})
 		end,
 	},
 	{
 		-- https://github.com/neovim/nvim-lspconfig
 		"neovim/nvim-lspconfig",
-    dependencies = {
+		dependencies = {
 			-- Allows the nvim cmp to communicate with the LSPs to suggest completions
-      "hrsh7th/cmp-nvim-lsp",
-    },
+			"hrsh7th/cmp-nvim-lsp",
+		},
 
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			vim.lsp.enable("lua_ls")
-			vim.lsp.enable("pylsp")
+			vim.lsp.enable("pyright")
 
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
@@ -38,19 +38,21 @@ return {
 				},
 			})
 
-			vim.lsp.config("pylsp", {
+			vim.lsp.config("pyright", {
 				capabilities = capabilities,
 				settings = {
-					["pylsp"] = {},
+					["pyright"] = {},
 				},
 			})
 
 			-- To look for more LSP functions, type ':h vim.lsp.buf'
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
+			vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+			vim.keymap.set("n", "<leader>c", vim.lsp.buf.incoming_calls, {})
+			vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
 		end,
 	},
