@@ -13,7 +13,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright" },
+				ensure_installed = { "lua_ls", "pyright", "gopls" },
 			})
 		end,
 	},
@@ -30,6 +30,7 @@ return {
 
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("pyright")
+			vim.lsp.enable("gopls")
 
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
