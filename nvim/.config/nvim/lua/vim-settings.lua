@@ -14,3 +14,9 @@ vim.opt.relativenumber = true
 vim.opt.shiftwidth = 3
 vim.opt.tabstop = 3
 vim.opt.expandtab = true
+
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	update_in_insert = true,
+})
