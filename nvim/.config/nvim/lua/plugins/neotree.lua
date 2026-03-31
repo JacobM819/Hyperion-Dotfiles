@@ -11,7 +11,11 @@ return {
 	config = function()
 		require("neo-tree").setup({
 			close_if_last_window = true,
-         hide_dotfiles = false,
+			filesystem = {
+				filtered_items = {
+					hide_dotfiles = false,
+				},
+			},
 			event_handlers = {
 				{
 					event = "file_opened",
