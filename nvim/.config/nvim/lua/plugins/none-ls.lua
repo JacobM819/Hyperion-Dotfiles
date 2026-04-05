@@ -22,7 +22,10 @@ return {
             -- go
 				null_ls.builtins.diagnostics.golangci_lint,
 				null_ls.builtins.formatting.goimports,
-				null_ls.builtins.formatting.gofumt,
+				null_ls.builtins.formatting.gofumpt,
+            -- shell
+            null_ls.builtins.diagnostics.shellcheck,
+            null_ls.builtins.formatting.beautysh
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", function()
