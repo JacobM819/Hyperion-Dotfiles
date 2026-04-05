@@ -9,7 +9,7 @@ return {
 			ts.setup({
 				install_dir = vim.fn.stdpath("data") .. "/site",
 			})
-			ts.install({ "python", "javascript", "lua", "vim", "vimdoc", "query", "css" })
+			ts.install({ "python", "javascript", "lua", "vim", "vimdoc", "query", "css", "go", "html", "java", "C" })
 
       -- Auto install if not in the above list
 			vim.api.nvim_create_autocmd("FileType", {

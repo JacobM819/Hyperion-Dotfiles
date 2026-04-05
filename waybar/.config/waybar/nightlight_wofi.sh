@@ -13,7 +13,7 @@ if pgrep -x "wofi" > /dev/null; then
 fi
 
 # Temperature list + "Off" option
-temps=$(echo -e "Off\n$(seq 3000 250 5000)")
+temps=$(echo -e "Off\n$(seq 2000 250 4000)")
 
 # Show wofi
 chosen=$(echo "$temps" | wofi --dmenu --no-search --normal-window --autoclose --width 300)

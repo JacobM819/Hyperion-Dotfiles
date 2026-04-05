@@ -13,7 +13,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "gopls", "bash-language-server" },
+				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml"},
 			})
 		end,
 	},
@@ -29,9 +29,10 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			vim.lsp.enable("lua_ls")
-         vim.lsp.enable("bash-language-server")
+         vim.lsp.enable("bashls")
 			vim.lsp.enable("pyright")
 			vim.lsp.enable("gopls")
+			vim.lsp.enable("superhtml")
 
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
