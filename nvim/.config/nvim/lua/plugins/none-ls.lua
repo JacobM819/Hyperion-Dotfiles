@@ -10,6 +10,7 @@ return {
 				null_ls.builtins.completion.spell,
 				-- python code formatting
 				null_ls.builtins.diagnostics.pylint.with({
+               extra_args = { "--max-line-length=100" },
 					diagnostics_postprocess = function(diagnostic)
 						diagnostic.code = diagnostic.message_id
 					end,
