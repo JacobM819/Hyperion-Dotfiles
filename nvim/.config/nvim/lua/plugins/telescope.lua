@@ -7,13 +7,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
-		config = function()
-			-- telescope
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>f", builtin.find_files, {})
-			-- global grep
-			vim.keymap.set("n", "<leader>s", builtin.live_grep, {})
-		end,
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",

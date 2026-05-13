@@ -28,8 +28,6 @@ return {
 				},
 				update_debounce = 100,
 			})
-			vim.keymap.set("n", "<leader>gu", require("gitsigns").reset_hunk, {})
-			vim.keymap.set("n", "<leader>gi", require("gitsigns").preview_hunk, {})
 		end,
 	},
 }

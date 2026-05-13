@@ -1,5 +1,5 @@
 return {
-	-- Wrapps command line tools like ESLint into an LSP, to allow interface with our code
+	-- Wraps command line tools like ESLint into an LSP, to allow interface with our code
 	-- To add more formatters and such, simply add it to 'sources' and install via :Mason
 	"nvimtools/none-ls.nvim",
 	config = function()
@@ -29,8 +29,5 @@ return {
             null_ls.builtins.formatting.beautysh
 			},
 		})
-		vim.keymap.set("n", "<leader>gf", function()
-            vim.lsp.buf.format({ timeout_ms = 5000 })
-        end)
 	end,
 }
