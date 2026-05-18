@@ -9,7 +9,7 @@ end, { desc = "Format current buffer" })
 
 -- Toggle inline diagnostic text (virtual text)
 local virtual_text_enabled = true
-vim.keymap.set("n", "<leader>td", function()
+vim.keymap.set("n", "<leader>te", function()
 	virtual_text_enabled = not virtual_text_enabled
 	vim.diagnostic.config({ virtual_text = virtual_text_enabled })
 end, { desc = "Toggle inline diagnostic text" })
