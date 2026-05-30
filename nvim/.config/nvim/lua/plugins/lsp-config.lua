@@ -13,7 +13,11 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
+<<<<<<< Updated upstream
 				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml", "eslint"},
+=======
+				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml" },
+>>>>>>> Stashed changes
 			})
 		end,
 	},
@@ -28,13 +32,27 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+			vim.lsp.config("lua_ls", { capabilities = capabilities })
 			vim.lsp.enable("lua_ls")
-         vim.lsp.enable("bashls")
+
+			vim.lsp.config("bashls", { capabilities = capabilities })
+			vim.lsp.enable("bashls")
+
+			vim.lsp.config("pyright", { capabilities = capabilities })
 			vim.lsp.enable("pyright")
+
+			vim.lsp.config("gopls", { capabilities = capabilities })
 			vim.lsp.enable("gopls")
+
+			vim.lsp.config("superhtml", {
+				capabilities = capabilities,
+				cmd = { "superhtml", "lsp", "--syntax-only" },
+				filetypes = { "html", "htmldjango" },
+			})
 			vim.lsp.enable("superhtml")
 			vim.lsp.enable("eslint")
 
+<<<<<<< Updated upstream
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				settings = {
@@ -48,6 +66,17 @@ return {
 					["pyright"] = {},
 				},
 			})
+=======
+			-- To look for more LSP functions, type ':h vim.lsp.buf'
+			vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, {})
+			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+			vim.keymap.set("n", "<leader>c", vim.lsp.buf.incoming_calls, {})
+			vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
+>>>>>>> Stashed changes
 		end,
 	},
 }
