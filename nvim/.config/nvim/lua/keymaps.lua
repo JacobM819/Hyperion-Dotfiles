@@ -4,7 +4,24 @@
 
 -- Format the current buffer
 vim.keymap.set("n", "<leader>gf", function()
-	vim.lsp.buf.format({ timeout_ms = 5000 })
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	local has_null_ls = false
+	for _, client in ipairs(clients) do
+		if client.name == "null-ls" then
+			has_null_ls = true
+			break
+		end
+	end
+
+	vim.lsp.buf.format({
+		filter = function(client)
+			if has_null_ls then
+				return client.name == "null-ls"
+			end
+			return true
+		end,
+		timeout_ms = 5000,
+	})
 end, { desc = "Format current buffer" })
 
 -- Toggle inline diagnostic text (virtual text)
@@ -52,3 +69,5 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol gl
 vim.keymap.set("n", "<leader>c", vim.lsp.buf.incoming_calls, { desc = "View incoming calls" })
 vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, { desc = "Find symbol references" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+vim.keymap.set({'n', 'v'}, '<C-e>', '2<C-e>', { noremap = true })
+vim.keymap.set({'n', 'v'}, '<C-y>', '2<C-y>', { noremap = true })

@@ -2,8 +2,6 @@
 # ~/.bashrc
 #
 
-eval "$(starship init bash)"
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -23,5 +21,8 @@ nvim() {
     kitty @ set-spacing padding=20
 }
 
+
 neofetch
-eval "$(pyenv virtualenv-init -)"
+
+# 1. Initialize Starship FIRST
+eval "$(starship init bash)"

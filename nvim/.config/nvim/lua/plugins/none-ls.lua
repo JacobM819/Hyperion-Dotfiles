@@ -2,6 +2,9 @@ return {
 	-- Wraps command line tools like ESLint into an LSP, to allow interface with our code
 	-- To add more formatters and such, simply add it to 'sources' and install via :Mason
 	"nvimtools/none-ls.nvim",
+	dependencies = {
+		"nvimtools/none-ls-extras.nvim",
+	},
 	config = function()
 		local null_ls = require("null-ls")
 		null_ls.setup({
@@ -18,7 +21,7 @@ return {
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.black,
 				-- javascript
-				null_ls.builtins.diagnostics.eslint_d,
+				require("none-ls.diagnostics.eslint_d"),
 				null_ls.builtins.formatting.prettier,
             -- go
 				null_ls.builtins.diagnostics.golangci_lint,
