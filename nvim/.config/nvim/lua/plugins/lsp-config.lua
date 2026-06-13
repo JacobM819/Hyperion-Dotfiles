@@ -13,11 +13,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-<<<<<<< Updated upstream
 				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml", "eslint"},
-=======
-				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml" },
->>>>>>> Stashed changes
 			})
 		end,
 	},
@@ -52,7 +48,6 @@ return {
 			vim.lsp.enable("superhtml")
 			vim.lsp.enable("eslint")
 
-<<<<<<< Updated upstream
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				settings = {
@@ -66,7 +61,6 @@ return {
 					["pyright"] = {},
 				},
 			})
-=======
 			-- To look for more LSP functions, type ':h vim.lsp.buf'
 			vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, {})
@@ -76,7 +70,6 @@ return {
 			vim.keymap.set("n", "<leader>c", vim.lsp.buf.incoming_calls, {})
 			vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
->>>>>>> Stashed changes
 		end,
 	},
 }
