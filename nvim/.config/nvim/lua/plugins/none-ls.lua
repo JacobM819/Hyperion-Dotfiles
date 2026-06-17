@@ -29,7 +29,10 @@ return {
 				null_ls.builtins.formatting.gofumpt,
             -- shell
             null_ls.builtins.diagnostics.shellcheck,
-            null_ls.builtins.formatting.beautysh
+            null_ls.builtins.formatting.beautysh,
+            -- terraform
+            null_ls.builtins.diagnostics.terraform,
+            null_ls.builtins.formatting.terraform
 			},
 		})
 	end,

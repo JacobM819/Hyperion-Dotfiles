@@ -13,7 +13,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml", "eslint"},
+				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml", "eslint", "terraformls" },
 			})
 		end,
 	},
@@ -30,6 +30,23 @@ return {
 
 			vim.lsp.config("lua_ls", { capabilities = capabilities })
 			vim.lsp.enable("lua_ls")
+
+			vim.lsp.config("terraformls", {
+				capabilities = capabilities,
+				handlers = {
+					["window/showMessage"] = function(err, result, ctx, config)
+						if result and result.message then
+							-- Catch the annoying terraformls warnings and drop them
+							if result.message:match("single file") or result.message:match("workspace") then
+								return
+							end
+						end
+						-- Pass everything else to Neovim's default message handler
+						return vim.lsp.handlers["window/showMessage"](err, result, ctx, config)
+					end,
+				},
+			})
+			vim.lsp.enable("terraformls")
 
 			vim.lsp.config("bashls", { capabilities = capabilities })
 			vim.lsp.enable("bashls")
@@ -61,15 +78,6 @@ return {
 					["pyright"] = {},
 				},
 			})
-			-- To look for more LSP functions, type ':h vim.lsp.buf'
-			vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, {})
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-			vim.keymap.set("n", "<leader>c", vim.lsp.buf.incoming_calls, {})
-			vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
 		end,
 	},
 }
