@@ -31,21 +31,7 @@ return {
 			vim.lsp.config("lua_ls", { capabilities = capabilities })
 			vim.lsp.enable("lua_ls")
 
-			vim.lsp.config("terraformls", {
-				capabilities = capabilities,
-				handlers = {
-					["window/showMessage"] = function(err, result, ctx, config)
-						if result and result.message then
-							-- Catch the annoying terraformls warnings and drop them
-							if result.message:match("single file") or result.message:match("workspace") then
-								return
-							end
-						end
-						-- Pass everything else to Neovim's default message handler
-						return vim.lsp.handlers["window/showMessage"](err, result, ctx, config)
-					end,
-				},
-			})
+			vim.lsp.config("terraformls", { capabilities = capabilities })
 			vim.lsp.enable("terraformls")
 
 			vim.lsp.config("bashls", { capabilities = capabilities })

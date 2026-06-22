@@ -209,7 +209,7 @@
     "format": "{icon}",
     "format-icons": "",
     "exec-on-event": "true",
-    "on-click": "kitty nmtui",
+    "on-click": "~/.config/waybar/toggle-wifi-settings.sh",
     "tooltip-format": "Wifi Menu"
   },
 
