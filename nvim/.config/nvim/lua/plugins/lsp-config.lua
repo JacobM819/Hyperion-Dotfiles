@@ -13,12 +13,13 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml", "eslint", "terraformls" },
+				ensure_installed = { "lua_ls", "pyright", "gopls", "bashls", "superhtml", "eslint", "terraformls", "ts_ls" },
 			})
 		end,
 	},
 	{
 		-- https://github.com/neovim/nvim-lspconfig
+		-- :checkhealth lsp
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Allows the nvim cmp to communicate with the LSPs to suggest completions
@@ -28,20 +29,11 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			vim.lsp.config("lua_ls", { capabilities = capabilities })
-			vim.lsp.enable("lua_ls")
-
-			vim.lsp.config("terraformls", { capabilities = capabilities })
-			vim.lsp.enable("terraformls")
-
-			vim.lsp.config("bashls", { capabilities = capabilities })
-			vim.lsp.enable("bashls")
-
-			vim.lsp.config("pyright", { capabilities = capabilities })
-			vim.lsp.enable("pyright")
-
-			vim.lsp.config("gopls", { capabilities = capabilities })
-			vim.lsp.enable("gopls")
+			local servers = { "lua_ls", "terraformls", "bashls", "pyright", "gopls", "eslint" , "ts_ls"}
+			for _, lsp in ipairs(servers) do
+				vim.lsp.config(lsp, { capabilities = capabilities })
+				vim.lsp.enable(lsp)
+			end
 
 			vim.lsp.config("superhtml", {
 				capabilities = capabilities,
@@ -49,21 +41,6 @@ return {
 				filetypes = { "html", "htmldjango" },
 			})
 			vim.lsp.enable("superhtml")
-			vim.lsp.enable("eslint")
-
-			vim.lsp.config("lua_ls", {
-				capabilities = capabilities,
-				settings = {
-					["lua_ls"] = {},
-				},
-			})
-
-			vim.lsp.config("pyright", {
-				capabilities = capabilities,
-				settings = {
-					["pyright"] = {},
-				},
-			})
 		end,
 	},
 }

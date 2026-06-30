@@ -21,7 +21,6 @@ return {
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.black,
 				-- javascript
-				require("none-ls.diagnostics.eslint_d"),
 				null_ls.builtins.formatting.prettier,
             -- go
 				null_ls.builtins.diagnostics.golangci_lint,
